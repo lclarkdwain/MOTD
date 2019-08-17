@@ -1,0 +1,24 @@
+Server-MOTD:
+  enabled: true
+  change-interval: 3 # time (seconds) interval to changed the Server MOTD
+  messages:
+    - "&cServer &a&lMOTD&r &6Message 0"
+    - "&eServer &a&lMOTD&r &cMessage 1"
+    - "&6Server &a&lMOTD&r &aMessage 2"
+
+Join-MOTD:
+  use-placeholder: false
+  enabled: true
+  type: "multi-world"
+  single-world:
+    message: "Join MOTD Primary Message"
+    sub-message: "Join MOTD Sub Message"
+
+  multi-world:
+    world:
+      message: "Joined World"
+      sub-message: "Join MOTD Sub Message"
+
+    nether:
+      message: "Joined Nether"
+      sub-message: "Join MOTD Sub Message"

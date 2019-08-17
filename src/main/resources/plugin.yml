@@ -1,0 +1,5 @@
+name: MOTD
+main: dev.anullihate.motd.Motd
+author: anullihate
+version: "${pom.version}"
+api: ["1.0.0"]
