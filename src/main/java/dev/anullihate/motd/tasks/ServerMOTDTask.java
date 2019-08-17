@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class ServerMOTDTask extends PluginTask<Motd> {
 
-    private int lastRandomNumber;
+    private int seq = 0;
 
     public ServerMOTDTask(Motd owner) {
         super(owner);
@@ -21,13 +21,16 @@ public class ServerMOTDTask extends PluginTask<Motd> {
         Motd plugin = this.getOwner();
         List<String> allMessages = plugin.configReader.getServerMOTDMessages();
 
-        int max = allMessages.size();
-        Random rand = new Random();
-        int randomNumber = rand.nextInt(max);
-        while(randomNumber == lastRandomNumber) {
-            randomNumber = rand.nextInt(max);
+        while(true) {
+            if (this.seq < allMessages.size()) {
+                plugin.getServer().getNetwork().setName(TextFormat.colorize('&', allMessages.get(this.seq)));
+                this.seq++;
+                break;
+            } else {
+                this.seq = 0;
+            }
         }
-        lastRandomNumber = randomNumber;
-        plugin.getServer().getNetwork().setName(TextFormat.colorize('&', allMessages.get(randomNumber)));
+
+
     }
 }
