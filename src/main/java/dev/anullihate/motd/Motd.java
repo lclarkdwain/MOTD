@@ -39,7 +39,11 @@ public class Motd extends PluginBase implements Listener {
 
         if (this.isEnabled()) {
             if (configReader.isServerMOTDEnabled()) {
-                this.getServer().getScheduler().scheduleRepeatingTask(new ServerMOTDTask(this), configReader.getServerMOTDChangeInterval() * 20);
+                if (configReader.getServerMOTDType().equals("dynamic")) {
+                    this.getServer().getScheduler().scheduleRepeatingTask(new ServerMOTDTask(this), configReader.getServerMOTDChangeInterval() * 20);
+                } else {
+                    this.getServer().getNetwork().setName(TextFormat.colorize('&', configReader.getServerMOTDMessages().get(0)));
+                }
             }
 
             this.getServer().getPluginManager().registerEvents(this, this);

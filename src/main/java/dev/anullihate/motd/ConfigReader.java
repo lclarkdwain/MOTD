@@ -19,6 +19,10 @@ public class ConfigReader {
         return config.getBoolean("Server-MOTD.enabled");
     }
 
+    public String getServerMOTDType() {
+        return config.getString("Server-MOTD.type");
+    }
+
     public int getServerMOTDChangeInterval() {
         return config.getInt("Server-MOTD.change-interval");
     }

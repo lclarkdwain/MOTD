@@ -1,7 +1,8 @@
 Server-MOTD:
   enabled: true
-  change-interval: 3 # time (seconds) interval to changed the Server MOTD
-  messages:
+  type: "static" # static / dynamic
+  change-interval: 3 # time (seconds) ONLY IN DYNAMIC TYPE
+  messages: # IF STATIC IT WILL ONLY USE THE FIRST MESSAGE
     - "&cServer &a&lMOTD&r &6Message 0"
     - "&eServer &a&lMOTD&r &cMessage 1"
     - "&6Server &a&lMOTD&r &aMessage 2"
@@ -9,7 +10,7 @@ Server-MOTD:
 Join-MOTD:
   use-placeholder: false
   enabled: true
-  type: "multi-world"
+  type: "multi-world" # multi-world / single-world
   single-world:
     message: "Join MOTD Primary Message"
     sub-message: "Join MOTD Sub Message"
